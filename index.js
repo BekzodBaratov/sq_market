@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
+const bot = require("./Bot/bot");
 
 // Unhandeled Rejection
 process.on("unhandledRejection", (err) => {
@@ -19,5 +20,6 @@ process.on("uncaughtException", (err) => {
 require("./start/routes")(app);
 require("./start/db")();
 
+bot.launch();
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log("listening on port " + port));
