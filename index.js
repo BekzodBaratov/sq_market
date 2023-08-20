@@ -16,10 +16,11 @@ process.on("uncaughtException", (err) => {
   console.log(err.name, err.message);
   process.exit(1);
 });
+app.use(bot.webhookCallback("/webhook"));
+bot.launch().then(() => console.log("Telegram bot ishga tushdi."));
 
 require("./start/routes")(app);
 require("./start/db")();
 
-bot.launch();
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log("listening on port " + port));
