@@ -6,6 +6,7 @@ const fileUpload = require("express-fileupload");
 
 const categoryRoute = require("../src/routes/category.route");
 const productRoute = require("../src/routes/product.route");
+const orderRoute = require("../src/routes/order.route");
 
 module.exports = function (app) {
   app.use(cors());
@@ -16,6 +17,7 @@ module.exports = function (app) {
 
   app.use("/api/v1/categories", categoryRoute);
   app.use("/api/v1/products", productRoute);
+  app.use("/api/v1/orders", orderRoute);
 
   app.use(errorMiddleware);
 };
