@@ -1,4 +1,4 @@
-const Product = require("../models/product.model");
+const { Product } = require("../models/product.model");
 const { upload_img, delete_img } = require("../helpers/img_upload");
 
 const product = {

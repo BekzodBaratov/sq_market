@@ -1,5 +1,5 @@
-const Order = require("../models/order.model");
-
+const { Order } = require("../models/order.model");
+const bot = require("../../Bot/bot");
 const order = {
   getAll: async (req, res) => {
     const orders = await Order.find();
@@ -12,7 +12,14 @@ const order = {
     res.status(200).send(orders);
   },
   add: async (req, res) => {
-    const orders = await Order.create(req.body);
+    const orders = await Order.create(req.body).populate("products.product_id");
+    //     let stringData = `
+    // Ism ${orders.username}\n
+    // Telephone: ${orders.phone}\n
+    // Mahsulotlar: ${JSON.stringify(orders.products)}\n
+    // Umumiy Summa: ${orders.totalPrice}`;
+    // bot.handleUpdate(stringData);
+
     res.status(201).send(orders);
   },
   upd: async (req, res) => {
@@ -29,5 +36,13 @@ const order = {
     res.status(200).json({ success: true, data: order });
   },
 };
+
+bot.on("text", (ctx) => {
+  // Foydalanuvchidan kelgan matni olish
+  const messageText = ctx.message.text;
+  console.log("ishladi bu");
+  // Botga javob yuborish
+  ctx.reply(`Siz yuborgan matn: ${messageText}`);
+});
 
 module.exports = order;

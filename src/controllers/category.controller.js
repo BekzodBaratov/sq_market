@@ -1,4 +1,4 @@
-const Category = require("../models/category.model");
+const { Category } = require("../models/category.model");
 const { upload_img, delete_img } = require("../helpers/img_upload");
 
 const category = {
