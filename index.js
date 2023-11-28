@@ -6,7 +6,7 @@ const bot = require("./Bot/bot");
 if (process.env.NODE_ENV !== "production") {
   bot.startPolling();
 } else {
-  expressApp.use(bot.webhookCallback("/SQ"));
+  app.use(bot.webhookCallback("/SQ"));
   bot.telegram.deleteWebhook();
   bot.telegram.setWebhook("https://sqmarket-production.up.railway.app/api/v1/SQ");
 }
