@@ -27,6 +27,4 @@ require("./start/db")();
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log("listening on port " + port));
 
-bot.catch((err) => {
-  console.log("Ooops", err);
-});
+bot.catch((err) => console.log("Ooops", err));
