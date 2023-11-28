@@ -3,13 +3,7 @@ const express = require("express");
 const app = express();
 const bot = require("./Bot/bot");
 
-if (process.env.NODE_ENV !== "production") {
-  bot.startPolling();
-} else {
-  app.use(bot.webhookCallback("/sq"));
-  bot.telegram.deleteWebhook();
-  bot.telegram.setWebhook("https://sqmarket-production.up.railway.app/api/v1/sq");
-}
+bot.startPolling();
 
 // Unhandeled Rejection
 process.on("unhandledRejection", (err) => {
