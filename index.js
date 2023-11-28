@@ -17,7 +17,7 @@ process.on("uncaughtException", (err) => {
   process.exit(1);
 });
 app.use(bot.webhookCallback("/webhook"));
-bot.launch().then(() => console.log("Telegram bot ishga tushdi."));
+// bot.launch().then(() => console.log("Telegram bot ishga tushdi."));
 
 require("./start/routes")(app);
 require("./start/db")();

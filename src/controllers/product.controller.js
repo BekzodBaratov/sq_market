@@ -3,7 +3,7 @@ const { upload_img, delete_img } = require("../helpers/img_upload");
 
 const product = {
   getAll: async (req, res) => {
-    const products = await Product.find();
+    const products = await Product.find().populate("category_id");
     res.status(200).send(products);
   },
   getOne: async (req, res) => {
