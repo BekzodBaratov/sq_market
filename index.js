@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const bot = require("./bot");
 const app = express();
 
 // Unhandeled Rejection
@@ -18,6 +19,9 @@ process.on("uncaughtException", (err) => {
 
 require("./start/routes")(app);
 require("./start/db")();
+
+app.use(bot.webhookCallback("/webhook"));
+bot.launch().then(() => console.log("Telegram bot ishga tushdi."));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log("listening on port " + port));
