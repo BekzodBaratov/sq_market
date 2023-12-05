@@ -1,3 +1,5 @@
 module.exports = function (err, req, res, next) {
-  res.status(500).send("Serverda kutilmagan xato ro'y berdi", err.message);
+  res.locals.error = err;
+  const status = err.status || 500;
+  res.status(status).send("Serverda kutilmagan xato ro`y berdi ", err.message);
 };
