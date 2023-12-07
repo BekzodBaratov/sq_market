@@ -7,11 +7,11 @@ const app = express();
 // const adminOptions = require("./admin/admin.options");
 // const buildAdminRouter = require("./admin/admin.router");
 
-process.on("unhandledRejection", (err) => {
-  console.log("UNHANDLED REJECTION 💥");
-  console.log(err.name, err.message);
-  process.exit(1);
-});
+// process.on("unhandledRejection", (err) => {
+//   console.log("UNHANDLED REJECTION 💥");
+//   console.log(err.name, err.message);
+//   process.exit(1);
+// });
 process.on("uncaughtException", (err) => {
   console.log("UNHANDLED Excpections 💥");
   console.log(err.name, err.message);
