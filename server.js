@@ -12,11 +12,11 @@ const app = express();
 //   console.log(err.name, err.message);
 //   process.exit(1);
 // });
-process.on("uncaughtException", (err) => {
-  console.log("UNHANDLED Excpections 💥");
-  console.log(err.name, err.message);
-  process.exit(1);
-});
+// process.on("uncaughtException", (err) => {
+//   console.log("UNHANDLED Excpections 💥");
+//   console.log(err.name, err.message);
+//   process.exit(1);
+// });
 
 app.use(bot.webhookCallback("/webhook"));
 bot.launch().then(() => console.log("Telegram bot ishga tushdi."));

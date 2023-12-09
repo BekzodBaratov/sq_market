@@ -3,7 +3,14 @@ const { upload_img, delete_img } = require("../helpers/img_upload");
 
 const product = {
   getAll: async (req, res) => {
-    const products = await Product.find().populate("category_id");
+    let products;
+    if (!req.query.status) {
+      products = await Product.find({ status: true }).populate("category_id");
+    } else if (req.query.status == "all") {
+      products = await Product.find().populate("category_id");
+    } else if (typeof req.query.status == "boolean") {
+      products = await Product.find({ status: req.query.status }).populate("category_id");
+    }
     res.status(200).send(products);
   },
   getOne: async (req, res) => {
